@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Sample_Web_Application_1.Models.Product>
+
+@{
+    ViewData["Title"] = "Buying_History";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+<h1>Buying_History</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShippingCharges)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PicTitle)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShippingCharges)
+            </td>
+            <td>
+                <img src="@("~/image/" + item.PicTitle)" asp-append-version="true" height="200" width="200" />
+            </td>
+            <td>
+                <a asp-action="Rate_Product" asp-route-productid="@item.ProductId">Rate</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

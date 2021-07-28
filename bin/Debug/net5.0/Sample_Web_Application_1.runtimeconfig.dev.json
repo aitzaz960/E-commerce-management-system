@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\qazia\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\qazia\\.nuget\\packages"
+    ]
+  }
+}

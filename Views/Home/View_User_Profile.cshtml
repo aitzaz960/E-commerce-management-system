@@ -1,0 +1,80 @@
+﻿@model Sample_Web_Application_1.Models.User
+
+@{
+    ViewData["Title"] = "Complete_User_Profile";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+<h1>Complete_User_Profile</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="View_User_Profile">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="UserId" />
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" readonly="readonly" value=@Model.Username class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" readonly="readonly" value=@Model.Email class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label"></label>
+                <input asp-for="Contact" readonly="readonly" value=@Model.Contact class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="First_Name" class="control-label"></label>
+                <input asp-for="First_Name" readonly="readonly" class="form-control" value=@Model.First_Name required />
+                <span asp-validation-for="First_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Middle_Name" class="control-label"></label>
+                <input asp-for="Middle_Name" readonly="readonly" class="form-control" value=@Model.Middle_Name />
+                <span asp-validation-for="Middle_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Last_Name" class="control-label"></label>
+                <input asp-for="Last_Name" readonly="readonly" class="form-control" value=@Model.Last_Name required />
+                <span asp-validation-for="Last_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                <input asp-for="Gender" readonly="readonly" class="form-control" value=@Model.Gender required />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DOB" class="control-label"></label>
+                <input asp-for="DOB" readonly="readonly" class="form-control" value=@Model.DOB />
+                <span asp-validation-for="DOB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" readonly="readonly" class="form-control" value=@Model.Address required />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label for="PictureFile" class="control-label"></label>
+                <img src="@("~/image/" + Model.PicTitle)" asp-append-version="true" width="250" height="250" />
+                <span asp-validation-for="PictureFile" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Back" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

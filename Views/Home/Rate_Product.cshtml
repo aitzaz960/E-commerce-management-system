@@ -1,0 +1,65 @@
+﻿@model Sample_Web_Application_1.Models.Product
+
+@{
+    ViewData["Title"] = "Rate Product";
+    Layout = "~/Views/Shared/User_Layout.cshtml";
+}
+
+<h1>Rate</h1>
+
+<h4>Product</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Rate_Product" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ProductId" />
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" value=@Model.Title readonly="readonly"/>
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" value=@Model.Description readonly="readonly"/>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Category" class="control-label"></label>
+                <input asp-for="Category" class="form-control" value=@Model.Category readonly="readonly"/>
+                <span asp-validation-for="Category" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" value=@Model.Price readonly="readonly"/>
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ShippingCharges" class="control-label"></label>
+                <input asp-for="ShippingCharges" class="form-control" value=@Model.ShippingCharges readonly="readonly"/>
+                <span asp-validation-for="ShippingCharges" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rating" class="control-label"></label>
+                <input asp-for="Rating" type="range" max="5" min="1" class="form-control" value=@Model.Rating/>
+                <span asp-validation-for="Rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PicTitle" class="control-label"></label>
+                <img src="@("~/image/" + Model.PicTitle)" asp-append-version="true" width="200" height="200" />
+                <span asp-validation-for="PicTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
